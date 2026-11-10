@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#e4f2e9">
+  <title>WheeBuy spreadsheet | Comparer les annonces avant l’achat</title>
+  <meta name="description" content="Utilisez le WheeBuy spreadsheet pour comparer les références, les mesures, les photos QC et les frais d’envoi. Retrouvez dix rayons sur HipobuyFind.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="WheeBuy spreadsheet | Comparer les annonces avant l’achat">
+  <meta property="og:description" content="Un guide en français pour faire une présélection et vérifier les détails d’une annonce avant de commander.">
+  <meta property="og:image" content="https://img.joomcdn.net/ca85868eb085f6e3e978531dae0929044750bc88_1024_909.jpeg">
+  <meta property="og:image:alt" content="Nike Air Max 90 grise et noire au Swoosh blanc">
+  <link rel="preconnect" href="https://img.joomcdn.net">
+  <!--
+    Recherche éditoriale : la première page de Bing n’a pas pu être consultée.
+    Dix résultats de la recherche web complémentaire ont servi à relever les sujets suivants.
+    sopel.fit/wheebuy-spreadsheet — recherche par rayon.
+    chinagrails.com/en/spreadsheet/agent/wheebuy — annonces de plusieurs places de marché.
+    whee-buy.net/what-is-wheebuy-spreadsheet/ — rôle du tableur.
+    qcradar.com/wheebuy-spreadsheet — photos de contrôle et conversion de devise.
+    usfansyupoo.com/agents/wheebuy/ — contexte du lien source.
+    grails.fit/wheebuy-spreadsheet-chrome-hearts — recherche ciblée par modèle ou marque.
+    wheespreadsheet.com/news-spot-the-real-wheebuy — vérification du domaine.
+    mixfittio.com/en/spreadsheet/wheebuy — repérage par catégorie.
+    one-to-oneyupoo.com/spreadsheets/wheebuy/ — références et familles d’articles.
+    wheebuyspreadsheet.com — repères de sélection et de commande.
+    Termes secondaires : liens produits WheeBuy, guide des tailles WheeBuy,
+    photos QC WheeBuy, frais de livraison WheeBuy.
+    Longue traîne travaillée dans le guide : lien source Weidian, annonce Taobao,
+    fiche 1688, référence du modèle, variante de couleur, stock de la variante,
+    lien produit expiré, historique de la fiche, tableau des tailles en centimètres,
+    longueur du pied, largeur à plat, longueur du dos, tour de tête, longueur de chaîne,
+    dimensions du sac, photo de la semelle, étiquette de pointure, photo du fermoir,
+    zoom sur les coutures, preuve d’authenticité, coût total livré, frais de conversion,
+    pays de destination, poids du colis emballé, dimensions du colis, conditions de retour.
+  -->
+  <style>
+    :root{color-scheme:light;--page:#f7fbf8;--mint:#e4f2e9;--ink:#172c26;--muted:#40564d;--accent:#784018;--line:#bdd3c7;--dark:#183b30;--gold:#ffe2ac}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--page);color:var(--ink);font:1rem/1.58 system-ui,sans-serif}
+    h1,h2,h3,p,figure,dl,dd{margin:0}
+    h1,h2,h3{line-height:1.12}
+    h1{font-size:clamp(2.4rem,6.8vw,5.75rem);letter-spacing:-.058em;overflow-wrap:anywhere}
+    h2{font-size:clamp(1.65rem,4vw,2.65rem);letter-spacing:-.04em}
+    h3{font-size:1.19rem}
+    a{color:var(--accent);text-underline-offset:.19em}
+    :focus-visible{outline:3px solid #9a4f1a;outline-offset:3px}
+    .wrap{width:min(73rem,calc(100% - 2rem));margin-inline:auto}
+    .mast{display:flex;justify-content:space-between;align-items:center;gap:.45rem 1rem;flex-wrap:wrap;padding-block:.85rem}
+    .brand{font-weight:850;color:var(--dark)}
+    .tag{color:var(--muted);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:750}
+    .intro{background:var(--mint);border-block:1px solid var(--line);padding-block:clamp(1.4rem,4vw,3.2rem) 1.15rem}
+    .intro p{max-width:68ch;margin-top:.7rem}
+    .rayons{margin-top:1.15rem}
+    .rayons h2{font-size:.94rem;letter-spacing:0}
+    .rayons ul{display:flex;flex-wrap:wrap;gap:.38rem;margin:.55rem 0 0;padding:0;list-style:none}
+    .rayons a{display:flex;align-items:center;min-height:2.5rem;padding:.25rem .75rem;border:1px solid var(--line);border-radius:1.4rem;background:var(--page);color:var(--dark);font-size:.9rem;font-weight:700;text-decoration:none}
+    .rayons a:hover{border-color:var(--dark);text-decoration:underline}
+    .split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(1rem,3vw,2.4rem);align-items:center}
+    .section{margin-block:clamp(1.65rem,4vw,3.6rem)}
+    .section h2+p{margin-top:.6rem}
+    img{display:block;width:100%;height:auto;object-fit:contain;background:#fff}
+    .hero img{aspect-ratio:3/2}
+    .hero figure,.samples figure{border:1px solid var(--line);background:white;overflow:hidden}
+    figcaption{padding:.6rem .75rem;color:var(--muted);font-size:.88rem}
+    .fields{margin-top:.8rem}
+    .fields div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:.25rem .75rem;border-top:1px solid var(--line);padding:.5rem 0}
+    dt{font-weight:800}
+    dd{color:var(--muted)}
+    .button{display:inline-block;background:var(--dark);color:white;font-weight:750;padding:.58rem .9rem;margin-top:.7rem;border-radius:.2rem}
+    .dossiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:1rem}
+    .dossiers article{padding:1.05rem;border-top:3px solid var(--dark);background:var(--mint)}
+    .dossiers p{margin-top:.5rem}
+    .samples{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin-top:.85rem}
+    .samples img{aspect-ratio:1}
+    .faq{border-top:1px solid var(--line);padding-top:1.2rem}
+    .faq h2{margin-bottom:.7rem}
+    details{border-bottom:1px solid var(--line)}
+    summary{cursor:pointer;font-weight:750;padding:.65rem 0}
+    details p{padding:0 0 .8rem;max-width:72ch;color:var(--muted)}
+    footer{background:var(--dark);color:white;padding:1rem 0}
+    footer a{color:var(--gold);font-weight:750}
+    footer p+p{margin-top:.35rem}
+    @media(max-width:44rem){.split,.dossiers{grid-template-columns:1fr}.samples{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  </style>
+<link rel="canonical" href="https://kakobuyfinds.github.io/ikfvd/">
+</head>
+<body>
+  <header class="wrap mast">
+    <a class="brand" href="https://www.hipobuyfind.com">www.hipobuyfind.com</a>
+    <span class="tag">Guide d’achat en français</span>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="titre">
+      <div class="wrap">
+        <h1 id="titre">WheeBuy spreadsheet</h1>
+        <p>Un WheeBuy spreadsheet est un tableau qui regroupe des liens vers des annonces de vêtements, de baskets et d’accessoires. Utilisez-le pour faire une présélection, puis ouvrez chaque annonce source pour confirmer la référence, la taille et le stock de la variante.</p>
+        <nav class="rayons" aria-labelledby="rayons">
+          <h2 id="rayons">Les rayons HipobuyFind</h2>
+          <ul>
+            <li><a href="https://hipobuyfind.com/category-911-Shoes.html">Chaussures</a></li>
+            <li><a href="https://hipobuyfind.com/category-912-Hoodies%2FSweaters.html">Sweats et pulls</a></li>
+            <li><a href="https://hipobuyfind.com/category-913-T-Shirts.html">T-shirts</a></li>
+            <li><a href="https://hipobuyfind.com/category-914-Jackets.html">Vestes</a></li>
+            <li><a href="https://hipobuyfind.com/category-915-Pants%2FShorts.html">Pantalons et shorts</a></li>
+            <li><a href="https://hipobuyfind.com/category-916-Headwear.html">Casquettes et bonnets</a></li>
+            <li><a href="https://hipobuyfind.com/category-917-Sets.html">Ensembles</a></li>
+            <li><a href="https://hipobuyfind.com/category-918-underwear%2Funderpants.html">Sous-vêtements</a></li>
+            <li><a href="https://hipobuyfind.com/category-919-Jersey.html">Maillots</a></li>
+            <li><a href="https://hipobuyfind.com/category-920-Accessories.html">Accessoires</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+    <section class="wrap section split hero" aria-labelledby="comparaison">
+      <figure>
+        <img src="https://img.joomcdn.net/ca85868eb085f6e3e978531dae0929044750bc88_1024_909.jpeg" width="1024" height="909" alt="Nike Air Max 90 grise et noire au Swoosh blanc" loading="eager" fetchpriority="high" decoding="async">
+        <figcaption>Nike Air Max 90 · Visuel de référence pour repérer un coloris.</figcaption>
+      </figure>
+      <div>
+        <h2 id="comparaison">Une fiche pour départager deux annonces</h2>
+        <p>Pour comparer deux baskets qui se ressemblent, relevez les mêmes informations sur chacune. Une donnée manquante devient une question à poser au vendeur.</p>
+        <dl class="fields">
+          <div><dt>Référence</dt><dd>Code modèle, variante de couleur et lien de l’annonce source.</dd></div>
+          <div><dt>Pointure</dt><dd>Mesure en centimètres et méthode indiquée par le vendeur.</dd></div>
+          <div><dt>Photos</dt><dd>Vue latérale, photo de la semelle et étiquette de pointure.</dd></div>
+          <div><dt>Budget</dt><dd>Coût total livré, avec le détail des frais connus.</dd></div>
+        </dl>
+        <a class="button" href="https://www.hipobuyfind.com">Parcourir HipobuyFind</a>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="dossiers">
+      <h2 id="dossiers">Quatre dossiers pour préparer son achat</h2>
+      <div class="dossiers">
+        <article>
+          <h3>Liens produits WheeBuy</h3>
+          <p>Que vous partiez d’un lien source Weidian, d’une annonce Taobao ou d’une fiche 1688, notez l’identifiant de l’article, le vendeur et la date de consultation. Ces repères donnent un historique de la fiche si le titre change. Si un lien produit a expiré, recherchez l’identifiant et revérifiez le domaine avant de saisir vos informations.</p>
+        </article>
+        <article>
+          <h3>Guide des tailles WheeBuy</h3>
+          <p>Pour des chaussures, partez de la longueur du pied et vérifiez si le tableau des tailles en centimètres mesure le pied ou la semelle intérieure. Pour un t-shirt, comparez la largeur à plat et la longueur du dos avec celles d’un vêtement qui vous va. Pour une casquette, mesurez votre tour de tête à l’endroit où reposera la bande.</p>
+        </article>
+        <article>
+          <h3>Photos QC WheeBuy</h3>
+          <p>Les photos QC servent au contrôle visuel de l’article. Pour un sac, demandez un zoom sur les coutures et les dimensions du sac prises à plat. Pour un bijou, demandez une photo du fermoir et la longueur de chaîne. Pour un produit de marque, demandez séparément une preuve d’authenticité vérifiable.</p>
+        </article>
+        <article>
+          <h3>Frais de livraison WheeBuy</h3>
+          <p>Pour comparer deux estimations, utilisez le même pays de destination, le poids du colis emballé et les dimensions du colis. Additionnez l’article, les frais de service, les frais de conversion et l’envoi. Vérifiez les frais d’importation applicables à votre destination et lisez les conditions de retour avant de valider.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="details-visuels">
+      <h2 id="details-visuels">Les détails à demander en photo</h2>
+      <p>Ces visuels illustrent les angles et les finitions à comparer. Consultez les annonces pour connaître les articles disponibles.</p>
+      <div class="samples">
+        <figure>
+          <img src="https://assets.christiandior.com/is/image/diorprod/683J606A0677C080_SBG_E01-4?$r9x10_raw$=&amp;bfc=on&amp;crop=0,0,4000,5000&amp;hei=2000&amp;qlt=80&amp;scale=1&amp;wid=1850" width="1850" height="2000" alt="T-shirt Dior blanc à col rond, présenté de face" loading="lazy" decoding="async">
+          <figcaption><strong>Dior</strong> · Vérifier la forme du col et la coupe.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1775718911/875733_3HBMC_1060_001_100_0000_Light-gorra-de-beisbol-de-lona-de-algodon-gg.jpg" width="490" height="490" alt="Casquette Gucci noire en toile à motif GG" loading="lazy" decoding="async">
+          <figcaption><strong>Gucci</strong> · Comparer le profil de la visière.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://jp.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-speedy-bandouliere-25--M46977_PM1_Side%20view.png?hei=1440&amp;wid=1440" width="1440" height="1440" alt="Sac Louis Vuitton Speedy Bandoulière 25 en toile Monogram brune, vu de côté" loading="lazy" decoding="async">
+          <figcaption><strong>Louis Vuitton</strong> · Examiner les attaches des anses.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.hermes.com/is/image/hermesproduct/pendentif-mini-pop-h--147992F%20E7-front-wm-2-0-0-1000-1000_g.jpg" width="1000" height="1000" alt="Pendentif Hermès Mini Pop H rose en forme de H sur chaîne dorée" loading="lazy" decoding="async">
+          <figcaption><strong>Hermès</strong> · Observer la finition du pendentif.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="wrap section faq" aria-labelledby="questions" itemscope itemtype="https://schema.org/FAQPage">
+      <h2 id="questions">Questions fréquentes</h2>
+      <details open itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <summary itemprop="name">À quoi sert un WheeBuy spreadsheet ?</summary>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">Il sert à repérer et comparer des annonces. Le vendeur indique sur sa fiche les variantes disponibles et les conditions de vente.</p>
+        </div>
+      </details>
+      <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <summary itemprop="name">Où mènent les liens de cette page ?</summary>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">Les liens de cette page ouvrent l’accueil ou l’un des dix rayons de HipobuyFind. Ce guide est indépendant de WheeBuy et des marques illustrées.</p>
+        </div>
+      </details>
+      <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <summary itemprop="name">Une photo QC suffit-elle à authentifier un article ?</summary>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">Une photo QC montre des détails visibles, comme l’état d’un fermoir ou une étiquette. Pour vérifier l’authenticité, demandez un justificatif traçable auprès d’une source autorisée.</p>
+        </div>
+      </details>
+      <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+        <summary itemprop="name">Comment comparer deux devis de livraison ?</summary>
+        <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+          <p itemprop="text">Comparez-les dans la même devise, pour la même destination, avec le poids et les dimensions du colis emballé. Demandez quels frais sont inclus dans chaque devis.</p>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><a href="https://www.hipobuyfind.com">www.hipobuyfind.com</a></p>
+      <p>Guide indépendant. Les noms de marque identifient les modèles illustrés.</p>
+    </div>
+  </footer>
+</body>
+</html>
